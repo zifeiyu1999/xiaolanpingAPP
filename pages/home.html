@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>首页 - 小蓝瓶</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #E5E7EB;
+            padding: 8px 0;
+        }
+        .nav-item {
+            color: #6B7280;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active {
+            color: #1E90FF;
+        }
+        .post-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .category-pill {
+            background: #F3F4F6;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .category-pill:hover {
+            background: #E5E7EB;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-16">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-gray-800">小蓝瓶</h1>
+            <div class="flex items-center space-x-4">
+                <button class="p-2 text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-search text-lg"></i>
+                </button>
+                <button class="p-2 text-gray-600 hover:text-gray-800">
+                    <i class="fas fa-bell text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 分类导航 -->
+    <div class="bg-white shadow-sm">
+        <div class="max-w-2xl mx-auto px-4 py-3">
+            <div class="flex space-x-3 overflow-x-auto pb-2">
+                <button class="category-pill px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    推荐
+                </button>
+                <button class="category-pill px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    学术
+                </button>
+                <button class="category-pill px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    校园
+                </button>
+                <button class="category-pill px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    互助
+                </button>
+                <button class="category-pill px-4 py-2 text-sm font-medium text-gray-700 whitespace-nowrap">
+                    活动
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 内容流 -->
+    <div class="max-w-2xl mx-auto px-4 py-4 space-y-4">
+        <!-- 帖子1 -->
+        <div class="post-card bg-white p-4 shadow-sm">
+            <div class="flex items-center mb-3">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     class="w-10 h-10 rounded-full" alt="用户头像">
+                <div class="ml-3">
+                    <h3 class="font-medium text-gray-900">学术达人</h3>
+                    <p class="text-sm text-gray-500">2小时前</p>
+                </div>
+            </div>
+            <p class="text-gray-800 mb-3">分享一个超实用的论文写作技巧！🎓 最近在写毕业论文，发现这个方法特别有效，希望对大家有帮助～</p>
+            <div class="grid grid-cols-2 gap-2 mb-3">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                     class="w-full h-40 object-cover rounded-lg" alt="帖子图片">
+                <img src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" 
+                     class="w-full h-40 object-cover rounded-lg" alt="帖子图片">
+            </div>
+            <div class="flex items-center justify-between text-gray-500 text-sm">
+                <div class="flex items-center space-x-4">
+                    <button class="flex items-center space-x-1">
+                        <i class="far fa-heart"></i>
+                        <span>128</span>
+                    </button>
+                    <button class="flex items-center space-x-1">
+                        <i class="far fa-comment"></i>
+                        <span>36</span>
+                    </button>
+                </div>
+                <button class="flex items-center space-x-1">
+                    <i class="far fa-bookmark"></i>
+                    <span>收藏</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- 帖子2 -->
+        <div class="post-card bg-white p-4 shadow-sm">
+            <div class="flex items-center mb-3">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     class="w-10 h-10 rounded-full" alt="用户头像">
+                <div class="ml-3">
+                    <h3 class="font-medium text-gray-900">校园生活家</h3>
+                    <p class="text-sm text-gray-500">4小时前</p>
+                </div>
+            </div>
+            <p class="text-gray-800 mb-3">求推荐好用的学习软件！📱 最近在准备期末考试，想找一些提高效率的工具，大家有什么推荐吗？</p>
+            <div class="flex items-center justify-between text-gray-500 text-sm">
+                <div class="flex items-center space-x-4">
+                    <button class="flex items-center space-x-1">
+                        <i class="far fa-heart"></i>
+                        <span>89</span>
+                    </button>
+                    <button class="flex items-center space-x-1">
+                        <i class="far fa-comment"></i>
+                        <span>42</span>
+                    </button>
+                </div>
+                <button class="flex items-center space-x-1">
+                    <i class="far fa-bookmark"></i>
+                    <span>收藏</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="max-w-2xl mx-auto px-4">
+            <div class="flex justify-around">
+                <a href="#" class="nav-item active flex flex-col items-center">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">首页</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-compass text-xl"></i>
+                    <span class="text-xs mt-1">发现</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-plus-circle text-3xl text-blue-500"></i>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-comment text-xl"></i>
+                    <span class="text-xs mt-1">消息</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

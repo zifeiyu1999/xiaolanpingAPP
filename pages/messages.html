@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>消息 - 小蓝瓶</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #E5E7EB;
+            padding: 8px 0;
+        }
+        .nav-item {
+            color: #6B7280;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active {
+            color: #1E90FF;
+        }
+        .message-item {
+            transition: all 0.3s ease;
+        }
+        .message-item:hover {
+            background: #F9FAFB;
+        }
+        .unread-badge {
+            background: #EF4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 9999px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-16">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-2xl mx-auto px-4 py-3 flex items-center justify-between">
+            <h1 class="text-xl font-bold text-gray-800">消息</h1>
+            <button class="p-2 text-gray-600 hover:text-gray-800">
+                <i class="fas fa-ellipsis-h text-lg"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- 消息分类 -->
+    <div class="bg-white shadow-sm">
+        <div class="max-w-2xl mx-auto px-4">
+            <div class="flex space-x-8">
+                <button class="py-3 text-blue-500 border-b-2 border-blue-500 font-medium">
+                    通知
+                </button>
+                <button class="py-3 text-gray-500 font-medium">
+                    私信
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 消息列表 -->
+    <div class="max-w-2xl mx-auto">
+        <!-- 点赞通知 -->
+        <div class="message-item bg-white p-4 border-b border-gray-100">
+            <div class="flex items-start">
+                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     class="w-10 h-10 rounded-full" alt="用户头像">
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-medium text-gray-900">学术达人</h3>
+                        <span class="text-sm text-gray-500">2分钟前</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-1">赞了你的帖子《论文写作技巧分享》</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 评论通知 -->
+        <div class="message-item bg-white p-4 border-b border-gray-100">
+            <div class="flex items-start">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     class="w-10 h-10 rounded-full" alt="用户头像">
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-medium text-gray-900">校园生活家</h3>
+                        <span class="text-sm text-gray-500">5分钟前</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-1">评论了你的帖子：这个方法太实用了！感谢分享～</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 关注通知 -->
+        <div class="message-item bg-white p-4 border-b border-gray-100">
+            <div class="flex items-start">
+                <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" 
+                     class="w-10 h-10 rounded-full" alt="用户头像">
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-medium text-gray-900">科研小能手</h3>
+                        <span class="text-sm text-gray-500">10分钟前</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-1">关注了你</p>
+                </div>
+                <button class="ml-4 px-4 py-1 bg-blue-500 text-white rounded-full text-sm">
+                    回关
+                </button>
+            </div>
+        </div>
+
+        <!-- 系统通知 -->
+        <div class="message-item bg-white p-4 border-b border-gray-100">
+            <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                    <i class="fas fa-bell text-blue-500"></i>
+                </div>
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-medium text-gray-900">系统通知</h3>
+                        <span class="text-sm text-gray-500">30分钟前</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-1">你的帖子《论文写作技巧分享》已被推荐到首页</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 活动通知 -->
+        <div class="message-item bg-white p-4">
+            <div class="flex items-start">
+                <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center">
+                    <i class="fas fa-calendar-alt text-green-500"></i>
+                </div>
+                <div class="ml-3 flex-1">
+                    <div class="flex items-center justify-between">
+                        <h3 class="font-medium text-gray-900">活动提醒</h3>
+                        <span class="text-sm text-gray-500">1小时前</span>
+                    </div>
+                    <p class="text-gray-600 text-sm mt-1">你报名的《学术论文写作工作坊》将在明天开始</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="max-w-2xl mx-auto px-4">
+            <div class="flex justify-around">
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">首页</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-compass text-xl"></i>
+                    <span class="text-xs mt-1">发现</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-plus-circle text-3xl text-blue-500"></i>
+                </a>
+                <a href="#" class="nav-item active flex flex-col items-center">
+                    <i class="fas fa-comment text-xl"></i>
+                    <span class="text-xs mt-1">消息</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 

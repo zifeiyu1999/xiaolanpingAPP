@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>发现 - 小蓝瓶</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .nav-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-top: 1px solid #E5E7EB;
+            padding: 8px 0;
+        }
+        .nav-item {
+            color: #6B7280;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active {
+            color: #1E90FF;
+        }
+        .topic-card {
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .topic-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        .search-bar {
+            background: #F3F4F6;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .search-bar:focus-within {
+            background: white;
+            box-shadow: 0 0 0 2px #1E90FF;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 pb-16">
+    <!-- 顶部导航栏 -->
+    <div class="bg-white shadow-sm sticky top-0 z-10">
+        <div class="max-w-2xl mx-auto px-4 py-3">
+            <div class="search-bar flex items-center px-4 py-2">
+                <i class="fas fa-search text-gray-400 mr-2"></i>
+                <input type="text" placeholder="搜索感兴趣的内容" class="bg-transparent w-full outline-none text-gray-700">
+            </div>
+        </div>
+    </div>
+
+    <!-- 热门话题 -->
+    <div class="bg-white shadow-sm">
+        <div class="max-w-2xl mx-auto px-4 py-4">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">热门话题 🔥</h2>
+            <div class="grid grid-cols-2 gap-4">
+                <div class="topic-card bg-gradient-to-br from-blue-500 to-blue-600 p-4 text-white">
+                    <h3 class="font-bold mb-2">#论文写作</h3>
+                    <p class="text-sm opacity-90">2.3万人正在讨论</p>
+                </div>
+                <div class="topic-card bg-gradient-to-br from-purple-500 to-purple-600 p-4 text-white">
+                    <h3 class="font-bold mb-2">#校园生活</h3>
+                    <p class="text-sm opacity-90">1.8万人正在讨论</p>
+                </div>
+                <div class="topic-card bg-gradient-to-br from-green-500 to-green-600 p-4 text-white">
+                    <h3 class="font-bold mb-2">#考研经验</h3>
+                    <p class="text-sm opacity-90">1.5万人正在讨论</p>
+                </div>
+                <div class="topic-card bg-gradient-to-br from-red-500 to-red-600 p-4 text-white">
+                    <h3 class="font-bold mb-2">#实习分享</h3>
+                    <p class="text-sm opacity-90">1.2万人正在讨论</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 推荐内容 -->
+    <div class="max-w-2xl mx-auto px-4 py-4">
+        <h2 class="text-lg font-bold text-gray-800 mb-4">为你推荐 👀</h2>
+        <div class="space-y-4">
+            <!-- 推荐卡片1 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     class="w-full h-48 object-cover" alt="推荐内容">
+                <div class="p-4">
+                    <h3 class="font-bold text-gray-800 mb-2">2024考研经验分享会</h3>
+                    <p class="text-gray-600 text-sm mb-3">多位上岸学长学姐分享备考经验，助你一战成硕！</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>3月15日 19:00</span>
+                        <button class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">
+                            立即报名
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 推荐卡片2 -->
+            <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" 
+                     class="w-full h-48 object-cover" alt="推荐内容">
+                <div class="p-4">
+                    <h3 class="font-bold text-gray-800 mb-2">学术论文写作工作坊</h3>
+                    <p class="text-gray-600 text-sm mb-3">专业导师指导，提升论文写作水平，助你发表高水平论文！</p>
+                    <div class="flex items-center justify-between text-sm text-gray-500">
+                        <span>3月20日 14:00</span>
+                        <button class="bg-blue-500 text-white px-4 py-1 rounded-full text-sm">
+                            立即报名
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 底部导航栏 -->
+    <div class="nav-bar">
+        <div class="max-w-2xl mx-auto px-4">
+            <div class="flex justify-around">
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-home text-xl"></i>
+                    <span class="text-xs mt-1">首页</span>
+                </a>
+                <a href="#" class="nav-item active flex flex-col items-center">
+                    <i class="fas fa-compass text-xl"></i>
+                    <span class="text-xs mt-1">发现</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-plus-circle text-3xl text-blue-500"></i>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-comment text-xl"></i>
+                    <span class="text-xs mt-1">消息</span>
+                </a>
+                <a href="#" class="nav-item flex flex-col items-center">
+                    <i class="fas fa-user text-xl"></i>
+                    <span class="text-xs mt-1">我的</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
