@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人资料 - 小蓝瓶</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <style>
+        .main-content {
+            padding-top: 3.5rem;
+            padding-bottom: 3.5rem;
+        }
+        .profile-header {
+            position: relative;
+            height: 12rem;
+            background-color: var(--primary-color);
+            overflow: hidden;
+        }
+        .profile-header-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('https://via.placeholder.com/800x400');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.2;
+        }
+        .profile-info {
+            position: relative;
+            padding: 1rem;
+            margin-top: -3rem;
+            background-color: white;
+            border-radius: 1rem 1rem 0 0;
+        }
+        .profile-avatar {
+            width: 6rem;
+            height: 6rem;
+            border-radius: 50%;
+            border: 0.25rem solid white;
+            margin: -4rem auto 1rem;
+            overflow: hidden;
+            background-color: var(--bg-color);
+        }
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-name {
+            text-align: center;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.5rem;
+        }
+        .profile-bio {
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+        }
+        .profile-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 1rem 0;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+        .stat-item {
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+        .profile-actions {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .profile-action {
+            flex: 1;
+            padding: 0.75rem;
+            border: 1px solid var(--border-color);
+            border-radius: 0.5rem;
+            text-align: center;
+            font-size: 0.875rem;
+            color: var(--text-color);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .profile-action:hover {
+            background-color: var(--bg-color);
+        }
+        .profile-action.primary {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .profile-action.primary:hover {
+            background-color: var(--primary-dark);
+        }
+        .profile-tabs {
+            display: flex;
+            background-color: white;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 3.5rem;
+            z-index: 40;
+        }
+        .profile-tab {
+            flex: 1;
+            padding: 1rem;
+            text-align: center;
+            color: var(--text-color);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .profile-tab.active {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--primary-color);
+        }
+        .profile-container {
+            display: none;
+        }
+        .profile-container.active {
+            display: block;
+        }
+        .post-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0.25rem;
+            padding: 0.25rem;
+        }
+        .post-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+        }
+        .post-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .post-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.875rem;
+            opacity: 0;
+            transition: all 0.2s;
+        }
+        .post-item:hover .post-overlay {
+            opacity: 1;
+        }
+        .achievement-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            padding: 1rem;
+        }
+        .achievement-item {
+            background-color: white;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            text-align: center;
+        }
+        .achievement-icon {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.5rem;
+            background-color: var(--bg-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        .achievement-title {
+            font-weight: 500;
+            color: var(--text-color);
+            margin-bottom: 0.25rem;
+        }
+        .achievement-desc {
+            font-size: 0.875rem;
+            color: var(--text-light);
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航栏 -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <h1 class="text-lg font-bold">个人资料</h1>
+            <div class="flex items-center gap-4">
+                <button class="text-light">
+                    <i class="fas fa-ellipsis-h"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容区 -->
+    <main class="main-content">
+        <!-- 个人资料头部 -->
+        <div class="profile-header">
+            <div class="profile-header-bg"></div>
+        </div>
+
+        <!-- 个人资料信息 -->
+        <div class="profile-info">
+            <div class="profile-avatar">
+                <img src="https://via.placeholder.com/200" alt="用户头像">
+            </div>
+            <div class="profile-name">张三</div>
+            <div class="profile-bio">计算机科学与技术专业 | 热爱编程和人工智能</div>
+            <div class="profile-stats">
+                <div class="stat-item">
+                    <div class="stat-value">128</div>
+                    <div class="stat-label">关注</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">256</div>
+                    <div class="stat-label">粉丝</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">512</div>
+                    <div class="stat-label">获赞</div>
+                </div>
+            </div>
+            <div class="profile-actions">
+                <button class="profile-action">编辑资料</button>
+                <button class="profile-action primary">分享主页</button>
+            </div>
+        </div>
+
+        <!-- 个人资料标签页 -->
+        <div class="profile-tabs">
+            <div class="profile-tab active" data-tab="posts">动态</div>
+            <div class="profile-tab" data-tab="achievements">成就</div>
+            <div class="profile-tab" data-tab="collections">收藏</div>
+            <div class="profile-tab" data-tab="likes">点赞</div>
+        </div>
+
+        <!-- 动态内容 -->
+        <div class="profile-container active" id="posts-container">
+            <div class="post-grid">
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="动态图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>128</span>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="动态图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>96</span>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="动态图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-heart"></i>
+                        <span>64</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 成就内容 -->
+        <div class="profile-container" id="achievements-container">
+            <div class="achievement-grid">
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="achievement-title">优质创作者</div>
+                    <div class="achievement-desc">发布10篇优质内容</div>
+                </div>
+                <div class="achievement-item">
+                    <div class="achievement-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <div class="achievement-title">社区贡献者</div>
+                    <div class="achievement-desc">获得100个赞</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 收藏内容 -->
+        <div class="profile-container" id="collections-container">
+            <div class="post-grid">
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="收藏图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="收藏图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-bookmark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 点赞内容 -->
+        <div class="profile-container" id="likes-container">
+            <div class="post-grid">
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="点赞图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+                <div class="post-item">
+                    <img src="https://via.placeholder.com/300" alt="点赞图片">
+                    <div class="post-overlay">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+        <div class="bottom-nav-content">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>首页</span>
+            </a>
+            <a href="discover.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>发现</span>
+            </a>
+            <a href="publish.html" class="nav-item">
+                <i class="fas fa-plus-circle"></i>
+                <span>发布</span>
+            </a>
+            <a href="messages.html" class="nav-item">
+                <i class="fas fa-comment"></i>
+                <span>消息</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="fas fa-user"></i>
+                <span>我的</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/profile.js"></script>
+</body>
+</html> 

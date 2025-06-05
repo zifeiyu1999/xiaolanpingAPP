@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小蓝瓶 - 学术社交APP原型</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .phone-container {
+            width: 375px;
+            height: 812px;
+            background: #000;
+            border-radius: 40px;
+            padding: 8px;
+            margin: 20px auto;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            border-radius: 32px;
+            overflow: hidden;
+            position: relative;
+        }
+        .status-bar {
+            height: 44px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+        .content-area {
+            height: calc(100% - 44px - 80px);
+            overflow-y: auto;
+        }
+        .bottom-nav {
+            height: 80px;
+            background: white;
+            border-top: 1px solid #e5e7eb;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding-bottom: 20px;
+        }
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .nav-item.active {
+            color: #667eea;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .post-card {
+            transition: transform 0.2s ease;
+        }
+        .post-card:hover {
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold text-center mb-8 gradient-bg text-transparent bg-clip-text">小蓝瓶 - 学术社交APP原型设计</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- 首页 -->
+            <div class="phone-container">
+                <div class="phone-screen">
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-signal text-sm"></i>
+                            <span class="text-sm">中国移动</span>
+                        </div>
+                        <div class="text-sm font-bold">9:41</div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm">100%</span>
+                            <i class="fas fa-battery-full text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <div class="content-area">
+                        <!-- 顶部搜索栏 -->
+                        <div class="p-4 bg-white border-b border-gray-100">
+                            <div class="flex items-center gap-3">
+                                <div class="flex-1 relative">
+                                    <input type="text" placeholder="搜索学术干货、校园趣事..." 
+                                           class="w-full px-4 py-2 pl-10 bg-gray-50 rounded-full text-sm border-none outline-none">
+                                    <i class="fas fa-search absolute left-3 top-2.5 text-gray-400 text-sm"></i>
+                                </div>
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                    <i class="fas fa-bell text-white text-sm"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 标签导航 -->
+                        <div class="p-4 bg-white border-b border-gray-100">
+                            <div class="flex gap-3 overflow-x-auto">
+                                <span class="px-4 py-2 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full text-sm whitespace-nowrap">推荐</span>
+                                <span class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">学术大佬</span>
+                                <span class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">校园互助</span>
+                                <span class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">表白墙</span>
+                                <span class="px-4 py-2 bg-gray-100 text-gray-600 rounded-full text-sm whitespace-nowrap">二手市场</span>
+                            </div>
+                        </div>
+                        
+                        <!-- 内容流 -->
+                        <div class="space-y-4 p-4">
+                            <!-- 帖子1 -->
+                            <div class="post-card bg-white rounded-2xl p-4 card-shadow">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://images.unsplash.com/photo-1494790108755-2616b2e7c02c?w=50&h=50&fit=crop&crop=face" 
+                                         class="w-10 h-10 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="font-semibold text-sm">学姐很可爱</div>
+                                        <div class="text-xs text-gray-500">3分钟前 · 清华大学</div>
+                                    </div>
+                                    <span class="px-2 py-1 bg-blue-100 text-blue-600 text-xs rounded-full">学术大佬</span>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="text-sm text-gray-800 mb-2">终于搞定了这个算法优化！🔥 分享一下我的深度学习调参心得，姐妹们冲鸭！</p>
+                                    <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=400&h=250&fit=crop" 
+                                         class="w-full h-40 object-cover rounded-xl">
+                                </div>
+                                <div class="flex items-center justify-between text-gray-500 text-sm">
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-heart"></i> 234
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-comment"></i> 89
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="fas fa-share"></i> 12
+                                        </span>
+                                    </div>
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- 帖子2 -->
+                            <div class="post-card bg-white rounded-2xl p-4 card-shadow">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&h=50&fit=crop&crop=face" 
+                                         class="w-10 h-10 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="font-semibold text-sm">摸鱼小王子</div>
+                                        <div class="text-xs text-gray-500">1小时前 · 北京大学</div>
+                                    </div>
+                                    <span class="px-2 py-1 bg-green-100 text-green-600 text-xs rounded-full">校园互助</span>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="text-sm text-gray-800 mb-2">有没有一起组队刷LeetCode的兄弟姐妹？ 每天打卡，互相监督！💪</p>
+                                    <div class="grid grid-cols-2 gap-2">
+                                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=150&fit=crop" 
+                                             class="w-full h-24 object-cover rounded-lg">
+                                        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=200&h=150&fit=crop" 
+                                             class="w-full h-24 object-cover rounded-lg">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between text-gray-500 text-sm">
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-heart"></i> 156
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-comment"></i> 43
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="fas fa-share"></i> 8
+                                        </span>
+                                    </div>
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                            
+                            <!-- 帖子3 -->
+                            <div class="post-card bg-white rounded-2xl p-4 card-shadow">
+                                <div class="flex items-center gap-3 mb-3">
+                                    <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&h=50&fit=crop&crop=face" 
+                                         class="w-10 h-10 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="font-semibold text-sm">甜甜圈女孩</div>
+                                        <div class="text-xs text-gray-500">2小时前 · 复旦大学</div>
+                                    </div>
+                                    <span class="px-2 py-1 bg-pink-100 text-pink-600 text-xs rounded-full">表白墙</span>
+                                </div>
+                                <div class="mb-3">
+                                    <p class="text-sm text-gray-800">想对图书馆三楼那个戴眼镜的学长说：你认真学习的样子真的很帅！😍 有勇气的话明天就去搭讪~</p>
+                                </div>
+                                <div class="flex items-center justify-between text-gray-500 text-sm">
+                                    <div class="flex items-center gap-4">
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-heart"></i> 387
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="far fa-comment"></i> 92
+                                        </span>
+                                        <span class="flex items-center gap-1">
+                                            <i class="fas fa-share"></i> 15
+                                        </span>
+                                    </div>
+                                    <i class="far fa-bookmark"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部导航 -->
+                    <div class="bottom-nav">
+                        <div class="nav-item active">
+                            <i class="fas fa-home text-lg"></i>
+                            <span class="text-xs">首页</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-compass text-lg"></i>
+                            <span class="text-xs">发现</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center -mt-6">
+                                <i class="fas fa-plus text-white text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-envelope text-lg"></i>
+                            <span class="text-xs">消息</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-user text-lg"></i>
+                            <span class="text-xs">我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 发现页面 -->
+            <div class="phone-container">
+                <div class="phone-screen">
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-signal text-sm"></i>
+                            <span class="text-sm">中国移动</span>
+                        </div>
+                        <div class="text-sm font-bold">9:41</div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm">100%</span>
+                            <i class="fas fa-battery-full text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <div class="content-area">
+                        <!-- 顶部标题 -->
+                        <div class="p-4 bg-white border-b border-gray-100">
+                            <h2 class="text-xl font-bold text-center">发现</h2>
+                        </div>
+                        
+                        <!-- 热门话题 -->
+                        <div class="p-4 bg-white mb-4">
+                            <h3 class="font-semibold mb-3 flex items-center gap-2">
+                                <i class="fas fa-fire text-orange-500"></i>
+                                热门话题
+                            </h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                    <div>
+                                        <div class="font-medium text-sm">#考研上岸经验分享#</div>
+                                        <div class="text-xs text-gray-500 mt-1">32.8万讨论 · 持续热议中</div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                    <div>
+                                        <div class="font-medium text-sm">#校园表白墙#</div>
+                                        <div class="text-xs text-gray-500 mt-1">18.9万讨论 · 新增654条</div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                                <div class="flex items-center justify-between p-3 bg-gray-50 rounded-xl">
+                                    <div>
+                                        <div class="font-medium text-sm">#二手好物分享#</div>
+                                        <div class="text-xs text-gray-500 mt-1">12.3万讨论 · 今日新增89条</div>
+                                    </div>
+                                    <i class="fas fa-chevron-right text-gray-400"></i>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 分类导航 -->
+                        <div class="px-4">
+                            <h3 class="font-semibold mb-3">分类浏览</h3>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="bg-white p-4 rounded-xl card-shadow text-center">
+                                    <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-graduation-cap text-blue-600 text-xl"></i>
+                                    </div>
+                                    <div class="font-medium text-sm">学术交流</div>
+                                    <div class="text-xs text-gray-500 mt-1">2.3万条内容</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl card-shadow text-center">
+                                    <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-hands-helping text-green-600 text-xl"></i>
+                                    </div>
+                                    <div class="font-medium text-sm">校园互助</div>
+                                    <div class="text-xs text-gray-500 mt-1">1.8万条内容</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl card-shadow text-center">
+                                    <div class="w-12 h-12 bg-pink-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-heart text-pink-600 text-xl"></i>
+                                    </div>
+                                    <div class="font-medium text-sm">表白墙</div>
+                                    <div class="text-xs text-gray-500 mt-1">9.2千条内容</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-xl card-shadow text-center">
+                                    <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <i class="fas fa-shopping-bag text-yellow-600 text-xl"></i>
+                                    </div>
+                                    <div class="font-medium text-sm">二手市场</div>
+                                    <div class="text-xs text-gray-500 mt-1">5.7千条内容</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- 推荐用户 -->
+                        <div class="p-4 bg-white mt-4">
+                            <h3 class="font-semibold mb-3">推荐关注</h3>
+                            <div class="space-y-3">
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&h=50&fit=crop&crop=face" 
+                                         class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="font-medium text-sm">AI研究小哥</div>
+                                        <div class="text-xs text-gray-500">清华大学 · 机器学习方向</div>
+                                    </div>
+                                    <button class="px-4 py-1 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full text-sm">关注</button>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=50&h=50&fit=crop&crop=face" 
+                                         class="w-12 h-12 rounded-full object-cover">
+                                    <div class="flex-1">
+                                        <div class="font-medium text-sm">编程女神</div>
+                                        <div class="text-xs text-gray-500">北京大学 · 计算机科学</div>
+                                    </div>
+                                    <button class="px-4 py-1 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full text-sm">关注</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- 底部导航 -->
+                    <div class="bottom-nav">
+                        <div class="nav-item">
+                            <i class="fas fa-home text-lg"></i>
+                            <span class="text-xs">首页</span>
+                        </div>
+                        <div class="nav-item active">
+                            <i class="fas fa-compass text-lg"></i>
+                            <span class="text-xs">发现</span>
+                        </div>
+                        <div class="nav-item">
+                            <div class="w-12 h-12 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center -mt-6">
+                                <i class="fas fa-plus text-white text-lg"></i>
+                            </div>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-envelope text-lg"></i>
+                            <span class="text-xs">消息</span>
+                        </div>
+                        <div class="nav-item">
+                            <i class="fas fa-user text-lg"></i>
+                            <span class="text-xs">我的</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 发布页面 -->
+            <div class="phone-container">
+                <div class="phone-screen">
+                    <!-- 状态栏 -->
+                    <div class="status-bar">
+                        <div class="flex items-center gap-2">
+                            <i class="fas fa-signal text-sm"></i>
+                            <span class="text-sm">中国移动</span>
+                        </div>
+                        <div class="text-sm font-bold">9:41</div>
+                        <div class="flex items-center gap-1">
+                            <span class="text-sm">100%</span>
+                            <i class="fas fa-battery-full text-sm"></i>
+                        </div>
+                    </div>
+                    
+                    <!-- 内容区域 -->
+                    <div class="content-area">
+                        <!-- 顶部导航 -->
+                        <div class="p-4 bg-white border-b border-gray-100 flex items-center justify-between">
+                            <button class="text-gray-600"><i class="fas fa-times text-lg"></i></button>
+                            <h2 class="text-lg font-semibold">发布动态</h2>
+                            <button class="px-4 py-1 bg-gradient-to-r from-blue-400 to-purple-500 text-white rounded-full text-sm">发布</button>
+                        </div>
+                        
+                        <!-- 发布内容 -->
+                        <div class="p-4">
+                            <!-- 分类选择 -->
+                            <div class="mb-4">
+                                <label class="block text-sm font-medium mb-2">选择分类</label>
+                                <div class="flex gap-2 overflow-x-auto">
+                                    <span class="px-3 py-1 bg-blue-500 text-white rounded-full text-sm whitespace-nowrap">学术交流</span>
+                                    <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm whitespace-nowrap">校园互助</span>
+                                    <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm whitespace-nowrap">表白墙</span>
+                                    <span class="px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm whitespace-nowrap">二手市场</span>
+                                </div>
+                            </div>
+                            
+                            <!-- 文本输入 -->
+                            <div class="mb-4">
+                                <textarea 
+                                    placeholder="分享你的学术心得、校园生活或者任何想法..."
+                                    class="w-full h-32 p-3 border border-gray-200 rounded-xl resize-none outline-none focus:border-blue-400"
+                                >刚刚完成了深度学习课程的期末项目！🎉 用PyTorch实现了一个图像分类模型，准确率达到了92%！
+
+想和大家分享一下我踩过的坑和调参心得：
+1. 数据预处理真的很重要
+2. 学习率调整要谨慎
+3. 过拟合问题的解决方案
+
+有想一起讨论的小伙伴吗？</textarea>
+                            </div>
+                            
+                            <!-- 图片上传区域 -->
+                            <div class="mb-4">
+                                <div class="grid grid-cols-3 gap-2">
+                                    <div class="aspect-square bg-gray-100 rounded-xl flex items-center justify-center border-2 border-dashed border-gray-300">
+                                        <i class="fas fa-camera text-gray-400 text-2xl"></i>
+                                    </div>
+                                    <div class="aspect-square rounded-xl overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=200&h=200&fit=crop" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                    <div class="aspect-square rounded-xl overflow-hidden">
+                                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=200&h=200&fit=crop" 
+                                             class="w-full h-full object-cover">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- 功能按钮 -->
+                            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-xl">
+                                <div class="flex items-center gap-6">
+                                    <button class="flex flex-col items-center gap-1">
+                                        <i class="fas fa-image text-blue-500 text-xl"></i>
+                                        <span class="text-xs text-gray-600">图片</span>
+                                    </button>
+                                    <button class="flex flex-col items-center gap-1">
+                                        <i class="fas fa-video text-green-500 text-xl"></i>
+                                        <span class="text-xs text-gray-600">视频</span>
+                                    </button>
+                                    <button class="flex flex-col items-center gap-1">
+                                        <i class="fas fa-map-marker-alt text-red-500 text-xl"></i>
+                                        <span class="text-xs text-gray-600">位置</span>
+                                    </button>
+                                    <button class="flex flex-col items-center gap-1">
+                                        <i class="fas fa-hashtag text-purple-500 text-xl"></i>
+                                        <span class="text-xs text-gray-600">话题</span
