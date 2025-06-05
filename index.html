@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小蓝瓶 - 原型展示</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .phone-frame {
+            width: 390px;
+            height: 844px;
+            border-radius: 40px;
+            border: 12px solid #1a1a1a;
+            position: relative;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        .status-bar {
+            height: 44px;
+            background: #000;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+            font-size: 14px;
+        }
+        .prototype-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(420px, 1fr));
+            gap: 2rem;
+            padding: 2rem;
+        }
+        .prototype-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .prototype-label {
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-4xl font-bold text-center mb-8">小蓝瓶 App 原型展示</h1>
+        <div class="prototype-container">
+            <!-- 登录界面 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/login.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">登录界面</div>
+            </div>
+
+            <!-- 首页 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/home.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">首页</div>
+            </div>
+
+            <!-- 发现页 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/discover.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">发现页</div>
+            </div>
+
+            <!-- 发布页 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/publish.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">发布页</div>
+            </div>
+
+            <!-- 消息页 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/messages.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">消息页</div>
+            </div>
+
+            <!-- 个人主页 -->
+            <div class="prototype-item">
+                <div class="phone-frame">
+                    <div class="status-bar">
+                        <span>9:41</span>
+                        <div>
+                            <i class="fas fa-signal"></i>
+                            <i class="fas fa-wifi ml-2"></i>
+                            <i class="fas fa-battery-full ml-2"></i>
+                        </div>
+                    </div>
+                    <iframe src="pages/profile.html" frameborder="0" width="100%" height="800"></iframe>
+                </div>
+                <div class="prototype-label">个人主页</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
